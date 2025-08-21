@@ -1,0 +1,10 @@
+.movies-main{
+display: flex;
+justify-content: center;
+/* align-items: center; */
+/* position: relative; */
+flex-direction: column;
+}
+.movies-cont{
+    position: absolute;
+}
