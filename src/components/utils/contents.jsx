@@ -1,4 +1,5 @@
 export const BASE_URL="https://image.tmdb.org/t/p/w500/" 
+export const ALL_GENRE="All Genre"
 export const GENRE_ID = {
   28: "Action",
   12: "Adventure",

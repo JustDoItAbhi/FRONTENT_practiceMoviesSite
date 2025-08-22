@@ -8,7 +8,8 @@ import WatchList from './components/WatchList'
 import Movis from './components/Movis'
 import Pagination from './components/Paginestion'
 import { useEffect, useState } from "react";
-BrowserRouter
+import PropDrillingContext from './components/degines/context/PropDrillingContext'
+
 
 function App() {
  const [watchList, setWatchList] = useState(() => {
@@ -52,15 +53,12 @@ const addtoWatchList=(movieToAdd)=>{
     <>
      <BrowserRouter>
      <NavBar/>
+      <PropDrillingContext.Provider value={{watchList,addtoWatchList,removeWatchList}}>
+
      <Routes>
-       <Route path='/' element={<Navigate to= "/Movis"/>} ></Route>
-      <Route path='/Movis' element={
-        <Movis
-        watchList={watchList}
-        addtoWatchList={addtoWatchList}
-        removeWatchList={removeWatchList}
-        />
-        } ></Route>
+        <Route path='/' element={<Navigate to= "/Movis"/>} ></Route>
+      <Route path='/Movis' element={<Movis/>} >
+    </Route>
       <Route path='/WatchList' element={
         <WatchList
         watchList={watchList}
@@ -68,6 +66,7 @@ const addtoWatchList=(movieToAdd)=>{
         setWatchList={setWatchList}
         />} ></Route>
      </Routes>
+     </PropDrillingContext.Provider>
      <Pagination/>
      </BrowserRouter>
     </>

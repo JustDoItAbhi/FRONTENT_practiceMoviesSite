@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { BASE_URL,GENRE_ID } from "./utils/contents";
+import { BASE_URL,GENRE_ID ,ALL_GENRE} from "./utils/contents";
 
 function WatchList({addtoWatchList,removeWatchList,watchList,setWatchList}) {
-    const[geners,setGenres]=useState(["All Genre"])
-    const[selectGenre,SetSelectGener]=useState(["All Genre"]);
+    const[geners,setGenres]=useState([ALL_GENRE])
+    const[selectGenre,SetSelectGener]=useState(ALL_GENRE);
     const[search,setSearch]=useState("");
 
     useEffect(()=>{
@@ -12,7 +12,7 @@ function WatchList({addtoWatchList,removeWatchList,watchList,setWatchList}) {
         })
         const uniqeGenre=new Set(genreList);
 
-        setGenres(["All Genre",...uniqeGenre ]);
+        setGenres([ALL_GENRE,...uniqeGenre ]);
     },[watchList]);
 
     const accendingOrder=(key)=>{

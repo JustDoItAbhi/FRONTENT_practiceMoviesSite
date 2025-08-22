@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from 'axios'
 import { BASE_URL } from "./utils/contents";
 import MoviesCard from "./MoviesCard";
 import BannerCard from "./BannerCard";
-
-function Movis({path,bannerLink,bannerLinkTitle,getMovies, title,addtoWatchList,removeWatchList,watchList}){
+import PropDrillingContext from './degines/context/PropDrillingContext'
+function Movis({path,bannerLink,bannerLinkTitle,getMovies, title}){
     const[moveis,setMovies]=useState([])
     const[banner,setBanner]=useState(null);
-  
+
+  const {watchList,addtoWatchList,removeWatchList}=useContext();
+
     useEffect(()=>{
         axios.get(`
            https://api.themoviedb.org/3/trending/movie/day?language=en-US&api_key=f557fc450ebd3cd3020a959b44ff3af9`)
@@ -19,7 +21,6 @@ function Movis({path,bannerLink,bannerLinkTitle,getMovies, title,addtoWatchList,
 
            })
     },[])
-
 
 return(
   <div className="p-8 ">
